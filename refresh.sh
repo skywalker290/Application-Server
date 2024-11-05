@@ -27,5 +27,5 @@ echo "Starting Gunicorn server..."
 echo "============================================" >> output.log
 echo "Gunicorn server started at: $(date '+%Y-%m-%d %H:%M:%S')" >> output.log
 echo "============================================" >> output.log
-nohup gunicorn -b 0.0.0.0:5001 --access-logfile - app:app >> output.log 2>&1 &
+nohup /home/ayush/.pyenv/versions/3.10.13/envs/test/bin/gunicorn -b 0.0.0.0:5001 --access-logfile - app:app >> output.log 2>&1 &
 echo "Gunicorn server started"
