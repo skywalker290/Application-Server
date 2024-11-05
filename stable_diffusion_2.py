@@ -14,19 +14,23 @@ sd2_model = StableDiffusionPipeline.from_pretrained(model_id, scheduler=schedule
 sd2_model = sd2_model.to("cuda")
 
 def sd2(request):
-    
-    data = request.get_json()
-    prompt = data.get('prompt')
-    height = int(data.get('height'))
-    width = int(data.get('width'))
-    
-    output_image_file = f'{gen_name()}.png'
-    output_image_path = f'Output_images/{output_image_file}'
+    try:
+        data = request.get_json()
+        prompt = data.get('prompt')
+        height = int(data.get('height'))
+        width = int(data.get('width'))
 
-    image = sd2_model(prompt, height=height, width=width).images[0]
-    image.save(output_image_path)
-    
-    return f"http://{PUBLIC_IP}/get-file/{output_image_file}"
+        output_image_file = f'{gen_name()}.png'
+        output_image_path = f'Output_images/{output_image_file}'
+
+        image = sd2_model(prompt, height=height, width=width).images[0]
+        image.save(output_image_path)
+
+        return f"http://{PUBLIC_IP}/get-file/{output_image_file}"
+
+    except Exception as e:
+        return ({"error": str(e)}), 500
+
 
 
 
