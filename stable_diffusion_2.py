@@ -20,6 +20,9 @@ def sd2(request):
         height = int(data.get('height'))
         width = int(data.get('width'))
 
+        if((height % 8)!=0 and (width % 8)!=0):
+            return "Height and Width must be a Multiple of 8", 500
+
         output_image_file = f'{gen_name()}.png'
         output_image_path = f'Output_images/{output_image_file}'
 
