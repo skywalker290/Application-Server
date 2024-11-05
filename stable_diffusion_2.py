@@ -17,8 +17,8 @@ def sd2(request):
     
     data = request.get_json()
     prompt = data.get('prompt')
-    height = data.get('height')
-    width = data.get('width')
+    height = int(data.get('height'))
+    width = int(data.get('width'))
     
     output_image_file = f'{gen_name()}.png'
     output_image_path = f'Output_images/{output_image_file}'
