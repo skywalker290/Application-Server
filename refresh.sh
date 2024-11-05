@@ -6,7 +6,7 @@
 # sudo systemctl enable myapp
 
 # This will Refresh the Server Running Clearing the output of Previous Run and 
-cd ~/home/ayush/Application-Server/
+cd ~/Application-Server/
 
 git pull
 
@@ -18,7 +18,7 @@ if [ -n "$PID" ]; then
     kill -9 $PID
     echo "Gunicorn server stopped"
 else
-    echo "No Gunicorn process found on port 5000"
+    echo "No Gunicorn process found on port 5001"
 fi
 
 # Restart the Gunicorn server
