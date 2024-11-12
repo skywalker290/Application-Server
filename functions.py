@@ -25,4 +25,4 @@ def gen_json(Data):
     return jsonify(response)
 
 def gen_name():
-    return str(datetime.now().strftime("%Y%m%d%H%M%S"))
+    return str(datetime.now().strftime("%Y%m%d%H%M%S%f")[:-3])
