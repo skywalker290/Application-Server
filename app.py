@@ -2,7 +2,8 @@ from flask import Flask, request, send_from_directory, render_template
 from flask_cors import CORS, cross_origin
 from flask import Flask, send_file, jsonify
 from functions import *
-from stable_diffusion_2 import * 
+# from stable_diffusion_2 import * 
+from stable_diffusion_xl_turbo import *
 
 app = Flask(__name__, static_url_path='/Output_images')
 CORS(app)
@@ -18,7 +19,7 @@ def generate_image():
     check = check_credentials(request)
     if(check != True):
         return check
-    return gen_json(sd2(request))
+    return gen_json(sdxl_turbo(request))
 
 @app.route('/get-file/<filename>', methods=['GET'])
 def get_file(filename):
