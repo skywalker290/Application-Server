@@ -1,3 +1,4 @@
+import time
 from flask import jsonify
 from datetime import datetime
 
@@ -25,4 +26,5 @@ def gen_json(Data):
     return jsonify(response)
 
 def gen_name():
-    return str(datetime.now().strftime("%Y%m%d%H%M%S%f")[:-3])
+    return f"{int(time.time() * 1000)}"
+    # return str(datetime.now().strftime("%Y%m%d%H%M%S%f")[:-3])

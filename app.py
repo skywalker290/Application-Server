@@ -21,11 +21,10 @@ def generate_image():
         return check
     return gen_json(sdxl_turbo(request))
 
-@app.route('/get-file/<filename>', methods=['GET'])
-def get_file(filename):
-    filename='Output_images/'+filename 
+@app.route('/get-file/<user>/<filename>', methods=['GET'])
+def get_file(user,filename):
+    filename= f"CardjiImages/{user}/{filename}" 
     return send_file(filename, as_attachment=True)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5001)
-
