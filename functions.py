@@ -39,6 +39,7 @@ def delete_files(request):
 
     for file_path in paths:
         try:
+            file_path = os.path.join("CardjiImages",file_path)
             if os.path.exists(file_path):
                 os.remove(file_path)
                 deleted_files.append(file_path)
