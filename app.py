@@ -26,5 +26,13 @@ def get_file(user,filename):
     filename= f"CardjiImages/{user}/{filename}" 
     return send_file(filename, as_attachment=True)
 
+@app.route('/delimage', methods=['POST'])
+def del_file(): 
+    check = check_credentials(request)
+    if(check != True):
+        return check
+    return delete_files(request)
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5001)
